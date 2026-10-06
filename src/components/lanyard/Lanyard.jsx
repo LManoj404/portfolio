@@ -26,9 +26,10 @@ const ATLAS_SIZE = 1024
 // A finite {x,y,z} check used to keep NaN out of the rope geometry.
 const isFiniteVec = (v) => !!v && Number.isFinite(v.x) && Number.isFinite(v.y) && Number.isFinite(v.z)
 
-// Desktop card enlargement (2.25× area on the mesh itself). Mobile keeps 1× so
+// Desktop card enlargement (+20% over the previous 1.5: clearly readable,
+// portrait proportionally larger, still breathing room). Mobile keeps 1× so
 // the card never overflows the small viewport.
-const SCALE = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 1.5
+const SCALE = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 1.8
 
 // card.glb geometry, measured from the asset itself (_audit/glbbounds.cjs):
 //   card face  y 0.0229 → 1.0229, x ±0.3582   (1.0 tall × 0.7164 wide)

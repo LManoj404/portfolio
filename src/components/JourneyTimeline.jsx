@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { JOURNEY } from '../data/content'
+import { certificateItems, experienceItems } from '../data/gallery'
+import StellarGallery from './gallery/StellarGallery'
 
 const ease = [0.22, 1, 0.36, 1]
 const rise = (delay = 0) => ({
@@ -62,16 +64,22 @@ export default function JourneyTimeline() {
       </div>
       <div className="certs">
         <motion.h3 className="certs-heading mono" {...rise()}>CERTIFICATIONS</motion.h3>
-        <div className="certs-grid">
-          {JOURNEY.certs.map((c, i) => (
-            <motion.div key={c.name} className="cert-card" data-cursor="3d" {...rise(0.08 * i)}>
-              <span className="cert-issuer mono">{c.issuer}</span>
-              <span className="cert-name">{c.name}</span>
-              <span className="cert-year mono">{c.year}</span>
-            </motion.div>
-          ))}
-        </div>
+        <p className="certs-note">Upload artwork to <span className="mono">public/assets/certificates/</span> — missing files render as elegant placeholders.</p>
       </div>
+      <StellarGallery
+        label="PROFESSIONAL JOURNEY"
+        title="EXPERIENCE GALAXY"
+        script="DATA / LEADERSHIP"
+        meta="INTERNSHIP · COORDINATION"
+        items={experienceItems}
+      />
+      <StellarGallery
+        label="CERTIFICATIONS & CREDENTIALS"
+        title="CERTIFICATE GALAXY"
+        script="LEARNING"
+        meta="CREDENTIALS / UPLOAD-READY"
+        items={certificateItems}
+      />
     </section>
   )
 }

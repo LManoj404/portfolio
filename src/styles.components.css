@@ -1,39 +1,4 @@
-/* ─── PROJECTS + MODAL ─────────────────────────────────── */
-.projects-list { display: flex; flex-direction: column; gap: 18px; max-width: 1180px; }
-.project-row {
-  display: grid; grid-template-columns: 64px 220px 1fr 48px; align-items: center; gap: 28px;
-  padding: 22px 26px; text-align: left;
-  border: 1px solid var(--hairline); border-radius: 18px;
-  background: linear-gradient(90deg, rgba(8, 10, 18, 0.6), rgba(0, 0, 0, 0.3));
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  color: var(--text); font-family: var(--font-head);
-  transition: border-color 0.2s, transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s;
-}
-.project-row:hover {
-  border-color: rgba(77, 141, 255, 0.5); transform: translateY(-3px);
-  box-shadow: 0 20px 60px -20px rgba(77, 141, 255, 0.4);
-  background: linear-gradient(90deg, rgba(11, 42, 107, 0.22), rgba(0, 0, 0, 0.3));
-}
-.project-row.is-flipped { background: linear-gradient(270deg, rgba(8, 10, 18, 0.6), rgba(0, 0, 0, 0.3)); }
-.project-num { font-size: 13px; color: var(--muted); }
-.project-info { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.project-cat { font-size: 10px; color: var(--primary); letter-spacing: 0.2em; }
-.project-title { font-size: clamp(17px, 1.8vw, 24px); font-weight: 600; line-height: 1.25; transition: color 0.2s; }
-.project-row:hover .project-title { color: #fff; text-shadow: 0 0 24px rgba(113, 164, 255, 0.45); }
-.project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
-.project-tech em { font-style: normal; font-size: 10px; color: var(--muted); border: 1px solid var(--hairline); border-radius: 999px; padding: 3px 10px; }
-.project-arrow { font-size: 20px; color: var(--muted); transition: color 0.2s, transform 0.25s var(--ease); }
-.project-row:hover .project-arrow { color: var(--bright); transform: translate(3px, -3px); }
-.pvisual { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); background: radial-gradient(80% 80% at 50% 40%, rgba(11, 42, 107, 0.35), rgba(0, 0, 0, 0.4)); aspect-ratio: 3 / 2; }
-.pvisual svg { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform 0.3s var(--ease); }
-.project-row:hover .pvisual svg { transform: scale(1.07); }
-.pv-frame { fill: none; stroke: rgba(245, 245, 247, 0.14); stroke-width: 0.6; }
-.pv-orbit { fill: none; stroke: rgba(77, 141, 255, 0.5); stroke-width: 0.5; stroke-dasharray: 3 2; }
-.pv-orbit2 { stroke: rgba(113, 164, 255, 0.35); }
-.pv-line { stroke: rgba(113, 164, 255, 0.4); stroke-width: 0.4; }
-.pv-node { fill: #9fc2ff; }
-.pv-core { fill: #c7dbff; }
-.pvisual-num { position: absolute; right: 10px; bottom: 6px; font-size: 10px; color: var(--muted); }
+/* ─── PROJECTS (3D stellar gallery — see .sg rules below) ─── */
 /* Modal */
 .modal-backdrop {
   position: fixed; inset: 0; z-index: 2000;
@@ -53,7 +18,6 @@
   font-size: 15px; transition: 0.2s;
 }
 .modal-close:hover { background: rgba(77, 141, 255, 0.2); border-color: var(--primary); }
-.pvisual-detail { height: 220px; border: 0; border-bottom: 1px solid var(--hairline); border-radius: 22px 22px 0 0; aspect-ratio: auto; }
 .modal-body { padding: 34px 38px 42px; }
 .modal-cat { font-size: 11px; color: var(--primary); letter-spacing: 0.22em; }
 .modal-title { font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.15; margin: 14px 0 16px; }
@@ -65,8 +29,6 @@
 .modal-features li { display: flex; gap: 10px; align-items: baseline; color: var(--elevated); font-size: 14px; }
 .modal-features li span { color: var(--primary); }
 @media (max-width: 860px) {
-  .project-row { grid-template-columns: 44px 1fr 36px; }
-  .pvisual { display: none; }
   .modal-body { padding: 24px 20px 30px; }
 }
 /* ─── JOURNEY ──────────────────────────────────────────── */
@@ -97,7 +59,9 @@
 .internship-dates { font-size: 11px; color: var(--primary); margin-top: 8px; }
 .internship-focus { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
 .certs { margin-top: 40px; }
-.certs-heading { font-size: 12px; color: var(--muted); letter-spacing: 0.3em; margin-bottom: 22px; }
+.certs-heading { font-size: 12px; color: var(--muted); letter-spacing: 0.3em; margin-bottom: 12px; }
+.certs-note { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+.certs-note .mono { color: var(--bright); font-size: 12px; }
 .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .cert-card {
   display: flex; flex-direction: column; gap: 10px; padding: 22px;
@@ -110,6 +74,90 @@
 .cert-name { font-weight: 600; font-size: 14px; line-height: 1.5; }
 .cert-year { font-size: 11px; color: var(--muted); margin-top: auto; }
 @media (max-width: 900px) { .certs-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .certs-grid { grid-template-columns: 1fr; } }
+/* ─── STELLAR GALLERY (3D card galaxy) ───────────────────── */
+.sg { margin-top: 70px; }
+.sg + .sg { margin-top: 110px; }
+.sg-head .section-heading { margin-bottom: 6px; }
+.sg-script {
+  font-size: clamp(40px, 7vw, 110px); font-weight: 700; line-height: 0.95;
+  letter-spacing: -0.02em; color: transparent;
+  -webkit-text-stroke: 1px rgba(139, 92, 246, 0.35);
+  margin: 10px 0 14px; user-select: none;
+}
+.sg-meta-line { font-size: 11px; color: var(--muted); letter-spacing: 0.28em; }
+.sg-canvas-wrap {
+  position: relative; height: clamp(480px, 62vh, 640px); margin-top: 34px;
+  border: 1px solid var(--hairline); border-radius: 22px; overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 50% 30%, rgba(77, 141, 255, 0.1), transparent 70%),
+    radial-gradient(45% 40% at 80% 80%, rgba(139, 92, 246, 0.08), transparent 70%),
+    #000;
+  touch-action: pan-y;
+}
+.sg-canvas-wrap canvas { display: block; }
+.sg-canvas-idle { position: absolute; inset: 0; }
+.sg-hint {
+  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+  font-size: 10px; color: var(--muted); letter-spacing: 0.24em; white-space: nowrap;
+  pointer-events: none;
+}
+/* Card face (inside 3D scene via drei Html) */
+.sg-card {
+  width: 300px; padding: 16px 16px 18px; text-align: left;
+  display: flex; flex-direction: column; gap: 8px;
+  background: linear-gradient(180deg, rgba(10, 13, 22, 0.96), rgba(5, 6, 11, 0.96));
+  border: 1px solid rgba(77, 141, 255, 0.28); border-radius: 16px;
+  color: var(--text); font-family: var(--font-head);
+  box-shadow: 0 24px 70px -24px rgba(77, 141, 255, 0.4);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  cursor: pointer;
+}
+.sg-card:hover, .sg-card.is-hover, .sg-card:focus-visible {
+  border-color: rgba(139, 92, 246, 0.65);
+  box-shadow: 0 30px 90px -20px rgba(139, 92, 246, 0.5), 0 0 0 1px rgba(113, 164, 255, 0.25);
+}
+.sg-card-top { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--hairline); }
+.sg-visual { position: relative; aspect-ratio: 16 / 9; background: radial-gradient(80% 80% at 50% 40%, rgba(11, 42, 107, 0.4), rgba(0, 0, 0, 0.5)); }
+.sg-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sgv-frame { fill: none; stroke: rgba(245, 245, 247, 0.16); stroke-width: 0.7; }
+.sgv-orbit { fill: none; stroke: rgba(77, 141, 255, 0.55); stroke-width: 0.55; stroke-dasharray: 3 2; }
+.sgv-orbit2 { stroke: rgba(139, 92, 246, 0.45); }
+.sgv-line { stroke: rgba(113, 164, 255, 0.42); stroke-width: 0.45; }
+.sgv-node { fill: #9fc2ff; }
+.sgv-core { fill: #c7dbff; }
+.sgv-bar { fill: rgba(113, 164, 255, 0.7); }
+.sgv-bar-dim { fill: rgba(245, 245, 247, 0.22); }
+.sgv-check { fill: none; stroke: #9fc2ff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.sg-visual-num { position: absolute; right: 10px; bottom: 6px; font-size: 10px; color: var(--muted); }
+.sg-img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.sg-coming {
+  position: absolute; inset: auto 0 0 0; padding: 10px; text-align: center;
+  font-size: 9px; line-height: 1.7; letter-spacing: 0.2em; color: var(--bright);
+  background: rgba(5, 7, 11, 0.72);
+}
+.sg-num { position: absolute; top: 8px; left: 10px; font-size: 10px; color: var(--muted); }
+.sg-cat { font-size: 9px; color: var(--primary); letter-spacing: 0.2em; }
+.sg-title { font-size: 17px; font-weight: 700; line-height: 1.3; }
+.sg-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.sg-tags em { font-style: normal; font-size: 9px; color: var(--muted); border: 1px solid var(--hairline); border-radius: 999px; padding: 3px 9px; }
+.sg-open { font-size: 10px; color: var(--bright); letter-spacing: 0.2em; margin-top: 2px; }
+/* Gallery modal shares .modal shell; larger visual + meta */
+.sg-modal-visual {
+  position: relative; border-bottom: 1px solid var(--hairline); border-radius: 22px 22px 0 0;
+  overflow: hidden; transition: transform 0.2s ease-out; background: #05070b;
+}
+.sg-visual-large { aspect-ratio: 21 / 9; }
+.sg-modal-img { width: 100%; max-height: 320px; object-fit: cover; display: block; }
+.sg-meta { font-size: 11px; color: var(--primary); letter-spacing: 0.14em; margin: -8px 0 16px; line-height: 1.9; }
+.sg-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.sg-actions:empty { display: none; }
+@media (max-width: 700px) {
+  .sg-card { width: 240px; padding: 12px 12px 14px; }
+  .sg-title { font-size: 15px; }
+  .sg-script { font-size: clamp(30px, 11vw, 52px); }
+  .sg-canvas-wrap { height: 440px; }
+}
 /* ─── CONTACT + FOOTER ─────────────────────────────────── */
 .contact { padding-bottom: 0; overflow: hidden; }
 .contact-nodes { position: absolute; inset: 0; pointer-events: none; }
